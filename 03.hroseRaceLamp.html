@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id='app'>
+        <input type="button" value="滚动" @click="loop">
+        <input type="button" value="停下" @click="stop">
+        <h4>{{ msg }}</h4>
+
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: '跑马灯12345678',
+                intervalId: null//在data中定义定时器id
+            },
+            methods: {
+                loop() {
+
+                    if(this.intervalId!=null) return;
+
+                    this.intervalId = setInterval(() => {
+                    
+                        var start = this.msg.substring(0, 1)//获取头
+                        var end = this.msg.substring(1)//尾
+                        this.msg = end + start//拼接
+                    }, 400)
+
+                },
+                stop(){
+                    
+                    clearInterval(this.intervalId)
+                    this.intervalId = null
+
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>

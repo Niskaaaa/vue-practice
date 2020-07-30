@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        <p>{{ msg }}</p>
+    </div>
+    
+    <script>
+       // 导入包之后 浏览器的内存中就多了一个Vue构造函数
+
+       var vm = new Vue({
+
+           el: '#app', //new的vue实例要控制页面的app区域
+           data:{ //存放el中要用到的数据
+               msg:'欢迎使用Vue',//通过vue提供的指令可以把数据渲染到页面上，不用dom操作
+
+           }
+       })
+    </script>
+</body>
+</html>
