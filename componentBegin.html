@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <mycom1></mycom1>
+        <mycom2></mycom2>
+    </div>
+    <script>
+        Vue.component('mycom2', {
+            template: '<h3>这是extend</h3>'
+        })
+
+        //new com1().$mount('#mycom1')
+        var vue = new Vue({
+            el: '#app'
+        })
+
+    </script>
+
+</body>
+
+</html>

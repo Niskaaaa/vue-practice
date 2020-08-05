@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+    <style>
+        .ball {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <input type="button" value="toggle" @click="flag=!flag">
+        
+        <transition
+        @before-enter="beforeEnter"
+        @enter="enter"
+        @after-enter="afterEnter">
+            <div class="ball" v-show="flag"></div>
+        </transition>
+
+    </div>
+    <script>
+        var vm = new Vue({
+
+            el: '#app', //new的vue实例要控制页面的app区域
+            data: { //存放el中要用到的数据
+                flag: false,//通过vue提供的指令可以把数据渲染到页面上，不用dom操作
+
+            },
+            methods:{
+                beforeEnter(el)  {
+                    
+                    el.style.transform = "translate(0, 0)"
+                    // 起始位置
+                },
+                enter(el,done)  {
+                    el.offsetWidth
+                    //保证有刷新
+                    el.style.transform = "translate(150px, 450px)"
+                    el.style.transition = 'all 1s ease'
+                   // 开始之后的样式
+                   done()//加done会立即消失
+                },
+                afterEnter(el)  {
+                    this.flag =  !this.flag
+                    // ...
+                }
+
+            }
+        })
+    </script>
+</body>
+
+</html>
